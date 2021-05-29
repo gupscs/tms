@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+
+<f:view locale="#{mainCtr.locale}">
+
+	<h:head>
+		<title><ui:insert name="tms-tittle">TMS</ui:insert></title>
+	</h:head>
+
+	<h:body>
+		<pe:layout fullPage="true">
+			<pe:layoutPane position="north" size="40" slidable="false" closable="false" spacingOpen="1">
+				<ui:include src="main-header.xhtml" />
+			</pe:layoutPane>
+			<pe:layoutPane position="south" size="40" slidable="false" closable="false" spacingOpen="1">
+				<ui:include src="main-footer.xhtml" />
+			</pe:layoutPane>
+			<pe:layoutPane position="west" size="200" slidable="false" closable="false" spacingOpen="1">
+				<ui:include src="main-menu.xhtml" />
+			</pe:layoutPane>
+			<pe:layoutPane position="center" slidable="false" closable="false" spacingOpen="1">
+				<ui:insert name="content" />
+			</pe:layoutPane>
+		</pe:layout>
+	</h:body>
+
+</f:view>
+
+</html>

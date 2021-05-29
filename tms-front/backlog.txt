@@ -1,0 +1,1 @@
+Utilizar sprign feign para clientes dos serviços rests
