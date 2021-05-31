@@ -68,7 +68,6 @@ public class MenuView extends CommonView {
     }
 
 	public void openTabMenuContent(BigInteger menuId) {
-		System.out.println(tabActiveIndex);
 		Integer indexTab = getTabActiveIndexByMenuId(menuId);
 		if(indexTab.compareTo(-1) == 0) {
 			MenuDto menuSelected = getMenuByMenuId(listMenus, menuId );
@@ -82,7 +81,6 @@ public class MenuView extends CommonView {
 		}else {
 			tabActiveIndex = indexTab;
 		}
-		System.out.println(tabActiveIndex);
 	}
 
 	private Integer getTabActiveIndexByMenuId(BigInteger menuId) {

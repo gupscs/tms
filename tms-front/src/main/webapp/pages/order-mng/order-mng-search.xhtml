@@ -6,16 +6,8 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:pe="http://primefaces.org/extensions">
 
-<ui:composition template="/pages/template/content-with-detail-template.xhtml">
-	<ui:define name="search">
-		<ui:include src="order-mng-search.xhtml"/>
-	</ui:define>
-	<ui:define name="main-table">
-		<ui:include src="order-mng-main-table.xhtml"/>
-	</ui:define>
-	<ui:define name="detail">
-		<ui:include src="order-mng-detail.xhtml"/>
-	</ui:define>
+<ui:composition>
+	<p:outputLabel value="order-mng-search"/>
 </ui:composition>
 
 </html>
