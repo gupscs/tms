@@ -7,7 +7,32 @@
 	xmlns:pe="http://primefaces.org/extensions">
 
 <ui:composition>
-	<p:outputLabel value="order-mng-search"/>
+
+
+	<p:panel header="Header" toggleable="true" toggleSpeed="500" widgetVar="panel">
+
+		<div class="ui-fluid p-formgrid p-grid">
+			<div class="p-field p-col-12 p-md-4">
+				<label for="firstname">Transport Order</label>
+				<p:inputText id="float-input" value="#{orderMngView.searchView.listTO}" />
+				<p:commandButton id="to-multi-input" icon="pi pi-plus" type="button" />
+				<p:overlayPanel for="to-multi-input" style="width:350px">
+					<p:inputTextarea autoResize="false"	value="#{orderMngView.searchView.listTO}" />
+				</p:overlayPanel>
+			</div>
+			<div class="p-field p-col-12 p-md-4">
+				<label for="lastname">ETD: </label>
+				 <p:datePicker id="range" selectionMode="range" value="#{orderMngView.searchView.etd}" readonlyInput="true"/>
+			</div>
+			<div class="p-field p-col-12 p-md-4">
+				<p:commandButton type="button" icon="pi pi-search"	action="#{orderMngView.search}" />
+			</div>
+		</div>
+
+	</p:panel>
+
+
+
 </ui:composition>
 
 </html>
