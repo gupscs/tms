@@ -18,7 +18,7 @@ public class MenuSvcMkpImpl implements MenuSvc {
 		List<MenuDto> subOrder = new ArrayList<MenuDto>();
 		MenuDto orderMng = new MenuDto(new BigInteger("2"), "Order Management", "/pages/order-mng/order-mng.xhtml" , 2100, null); 		
 		subOrder.add(orderMng);
-		MenuDto orderHeader = new MenuDto(new BigInteger("1"), "Orders", "", 2000, subOrder);	
+		MenuDto orderHeader = new MenuDto(new BigInteger("1"), "Planning", "", 2000, subOrder);	
 		menuList.add(orderHeader);	
 		return menuList;
 	}
