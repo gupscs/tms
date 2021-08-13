@@ -3,11 +3,83 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:pe="http://primefaces.org/extensions">
+	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition>
-	<p:outputLabel value="order-mng-main-table"/>
+
+	<h:form id="form-order-mng-main-table" enctype="multipart/form-data">
+		<p:dataTable id="main-datatable" var="transOrder"	value="#{orderMngView.transportOrdersHeader}" stripedRows="true">
+			<p:column headerText="#{msg['transport-order.toNo']}">
+				<h:outputText value="#{transOrder.toNo}" />
+			</p:column>
+			<p:column headerText="#{msg['transport-order.refNo']}">
+				<h:outputText value="#{transOrder.refNo}" />
+			</p:column>
+			<p:column headerText="#{msg['label.status']}">
+				<h:outputText value="#{transOrder.statusCd}" />
+			</p:column>
+			<p:column headerText="#{msg['transport-order.shipperNm']}">
+				<h:outputText value="#{transOrder.shipperNm}" />
+			</p:column>
+			<p:column headerText="#{msg['transport-order.customerNm']}">
+				<h:outputText value="#{transOrder.customerNm}" />
+			</p:column>
+			<p:column headerText="#{msg['transport-order.orderTypeCd']}">
+				<h:outputText value="#{transOrder.orderTypeCd}" />
+			</p:column>
+			<p:column headerText="#{msg['transport-order.etd']}">
+				<h:outputText value="#{transOrder.etd}" />
+			</p:column>
+			<p:column headerText="#{msg['transport-order.eta']}">
+				<h:outputText value="#{transOrder.eta}" />
+			</p:column>
+			<p:column headerText="#{msg['transport-order.shipTypeCd']}">
+				<h:outputText value="#{transOrder.shipTypeCd}" />
+			</p:column>
+			<p:column headerText="#{msg['transport-order.shipTypeNm']}">
+				<h:outputText value="#{transOrder.shipTypeNm}" />
+			</p:column>
+			<p:column headerText="#{msg['transport-order.sourceNm']}">
+				<h:outputText value="#{transOrder.sourceNm}" />
+			</p:column>
+			<p:column headerText="#{msg['transport-order.sourceZipcode']}">
+				<h:outputText value="#{transOrder.sourceZipcode}" />
+			</p:column>
+			<p:column headerText="#{msg['transport-order.sourceCityNm']}">
+				<h:outputText value="#{transOrder.sourceCityNm}" />
+			</p:column>
+			<p:column headerText="#{msg['transport-order.sourceStateNm']}">
+				<h:outputText value="#{transOrder.sourceStateNm}" />
+			</p:column>
+			<p:column headerText="#{msg['transport-order.shipToNm']}">
+				<h:outputText value="#{transOrder.shipToNm}" />
+			</p:column>
+			<p:column headerText="#{msg['transport-order.shipToAddress']}">
+				<h:outputText value="#{transOrder.shipToAddress}" />
+			</p:column>
+			<p:column headerText="#{msg['transport-order.shipToDistrict']}">
+				<h:outputText value="#{transOrder.shipToDistrict}" />
+			</p:column>
+			<p:column headerText="#{msg['transport-order.shipToZipcode']}">
+				<h:outputText value="#{transOrder.shipToZipcode}" />
+			</p:column>
+			<p:column headerText="#{msg['transport-order.shipToCityNm']}">
+				<h:outputText value="#{transOrder.shipToCityNm}" />
+			</p:column>
+			<p:column headerText="#{msg['transport-order.shipToStateNm']}">
+				<h:outputText value="#{transOrder.shipToStateNm}" />
+			</p:column>
+		</p:dataTable>
+		<div align="right">
+			<p:commandButton value="#{msg['transport-order.upload.toNo']}"  onclick="PF('order-mng-upload-order-dialog').show()" />
+		</div>
+		
+		
+	</h:form>
+	
+ 	<ui:include src="order-mng-upload-order-dialog.xhtml"/> 
+
+
 </ui:composition>
 
 </html>

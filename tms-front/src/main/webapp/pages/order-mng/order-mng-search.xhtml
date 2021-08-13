@@ -3,35 +3,67 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:pe="http://primefaces.org/extensions">
+	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition>
-
-
-	<p:panel header="Header" toggleable="true" toggleSpeed="500" widgetVar="panel">
-
-		<div class="ui-fluid p-formgrid p-grid">
-			<div class="p-field p-col-12 p-md-4">
-				<label for="firstname">Transport Order</label>
-				<p:inputText id="float-input" value="#{orderMngView.searchView.listTO}" />
-				<p:commandButton id="to-multi-input" icon="pi pi-plus" type="button" />
-				<p:overlayPanel for="to-multi-input" style="width:350px">
-					<p:inputTextarea autoResize="false"	value="#{orderMngView.searchView.listTO}" />
-				</p:overlayPanel>
+	<h:form id="form-order-mng-search">
+		<p:panel header="#{msg['transport-order.title']}" toggleable="true" toggleSpeed="500" widgetVar="panel">
+			 <div class="p-grid vertical-container">
+			    <div class="p-col">
+					 <div class="ui-fluid p-formgrid p-grid">
+					 	
+					 	<div class="p-field p-col-12 p-md-3">
+					 		<p:outputLabel for="inputTransportOrder" value="#{msg['transport-order.toNo']} :"/>
+							<p:inputText  id="inputTransportOrder"	value="#{orderMngView.searchView.listTO}" widgetVar="varInputTxTo"/>
+						</div>
+						<p:overlayPanel for="inputTransportOrder" style="width:300px" showCloseIcon="true" dismissable="false" widgetVar="varOverlayPanelTo" onShow="addContentInputTextArea(PF('varOverlayPanelTo'), PF('varInputTxAreaTo') , PF('varInputTxTo'))">
+							<div align="right">
+								<p:commandButton type="button" icon="pi pi-trash" styleClass="rounded-button ui-button-danger ui-button-flat"  onclick="removeContentInputText(PF('varOverlayPanelTo'), PF('varInputTxAreaTo') , PF('varInputTxTo'))"/>
+								<p:commandButton type="button" icon="pi pi-plus-circle" styleClass="rounded-button ui-button-flat" onclick="addContentInputText(PF('varOverlayPanelTo'), PF('varInputTxAreaTo') , PF('varInputTxTo'))" />
+							</div>
+							<p:inputTextarea autoResize="false"	widgetVar="varInputTxAreaTo" style="height:200px"/>
+							<small>#{msg['label.multiinput.tip']}</small>
+						</p:overlayPanel>
+						
+						<div class="p-field p-col-12 p-md-3">
+							<p:outputLabel  for="inputEtd" value="#{msg['transport-order.etd']}"/>
+							<p:datePicker id="inputEtd" selectionMode="range" value="#{orderMngView.searchView.etd}" readonlyInput="true" showIcon="true"/>
+						</div>
+						
+						<div class="p-field p-col-12 p-md-3">
+						</div>
+						
+						<div class="p-field p-col-12 p-md-3">
+						</div>
+						
+					 </div>
+			 	</div>
+			    <div class="p-col-fixed p-as-end" style="width:50px">
+			        <p:commandButton icon="pi pi-search" action="#{orderMngView.search()}" process="form-order-mng-search" />
+			    </div>
 			</div>
-			<div class="p-field p-col-12 p-md-4">
-				<label for="lastname">ETD: </label>
-				 <p:datePicker id="range" selectionMode="range" value="#{orderMngView.searchView.etd}" readonlyInput="true"/>
-			</div>
-			<div class="p-field p-col-12 p-md-4">
-				<p:commandButton type="button" icon="pi pi-search"	action="#{orderMngView.search}" />
-			</div>
-		</div>
-
-	</p:panel>
-
-
+		</p:panel>
+	</h:form>
+	<script>
+		function addContentInputText(varOverlayPanel, varInputTxArea, varInputTx ){
+			var strInptTxArea = document.getElementById(varInputTxArea.id).value;
+			var strInptTx = strInptTxArea.replaceAll(/\n/g , ',');
+			document.getElementById(varInputTx.id).value = strInptTx;
+			varOverlayPanel.hide();
+		}
+		
+		function removeContentInputText(varOverlayPanel, varInputTxArea, varInputTx ){
+			document.getElementById(varInputTxArea.id).value = '';
+			document.getElementById(varInputTx.id).value = '';
+			varOverlayPanel.hide();
+		}
+		
+		function addContentInputTextArea(varOverlayPanel, varInputTxArea, varInputTx ){
+			var strInptTx = document.getElementById(varInputTx.id).value;
+			var strInptTxArea = strInptTx.replaceAll( ',', '\n' );
+			document.getElementById(varInputTxArea.id).value = strInptTxArea;
+		}
+	</script>
 
 </ui:composition>
 

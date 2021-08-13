@@ -6,9 +6,10 @@ import java.util.List;
 import lombok.Data;
 
 @Data
-public class OrderMngSearchView {
+public class OrderMngSearchView{
 	
-	private String listTo;
+	
+	private String listTO;
 	
 	private List<LocalDate> etd;
 

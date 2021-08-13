@@ -15,7 +15,11 @@ public class TransportOrderDto{
 	
 	private Long companyId;
 	
+	private String companyCd;
+	
 	private Long branchId;
+	
+	private String branchCd;
 	
 	private String insertUserId;
 	
@@ -46,10 +50,6 @@ public class TransportOrderDto{
 	private String shipTypeNm;
 	
 	private String statusCd;
-	
-	private String subStatusCd;
-	
-	private Boolean partialStatus;
 	
 	private Boolean blocked;
 	
@@ -203,6 +203,6 @@ public class TransportOrderDto{
 	
 	private String currency      ;
 	
-	private List<TransportOrderItemDto> transportUnitItems;
+	private List<TransportOrderItemDto> transportOrderItems;
 	
 }

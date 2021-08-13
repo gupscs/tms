@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition>
+		<p:dialog header="#{msg['transport-order.upload.toNo']}" widgetVar="order-mng-upload-order-dialog" showEffect="fade">
+		
+			<p:messages id="messages" for="msg-order-mng-upload-order-dialog" showDetail="true" closable="true">
+	            <p:autoUpdate/>
+	        </p:messages>
+	
+			<p:fileUpload value="#{orderMngView.transpOrderUploadfile}"	mode="advanced" skinSimple="true" update="upload-to-datatable" accept=".xlsx"/>
+			<div align="right">
+				<p:commandButton value="#{msg['label.process']}" action="#{orderMngView.listTransportOrderSave}" process="@this" update="upload-to-datatable"/>	
+			</div>
+			<p:dataTable id="upload-to-datatable" var="excel"	value="#{orderMngView.excelTransportOrderDto}" stripedRows="true">
+				<p:column headerText="#{msg['label.excelLine']}">
+					<h:outputText value="#{excel.excelLine}" />
+				</p:column>
+				<p:column headerText="#{msg['transport-order.refNo']}">
+					<h:outputText value="#{excel.toNo}" />
+				</p:column>
+				
+				<p:column headerText="#{msg['transport-order.itemNo']}">
+					<h:outputText value="#{excel.itemNo}" />
+				</p:column>
+				
+				<p:column headerText="#{msg['transport-order.itemCd']}">
+					<h:outputText value="#{excel.itemCd}" />
+				</p:column>
+				
+				<p:column headerText="#{msg['transport-order.itemQty']}">
+					<h:outputText value="#{excel.itemQty}" />
+				</p:column>
+				
+				<p:column headerText="#{msg['label.status']}">
+					<h:outputText value="#{excel.statusProcess}" />
+				</p:column>
+				
+			</p:dataTable>
+			
+	
+		</p:dialog>
+</ui:composition>
+
+</html>
+
